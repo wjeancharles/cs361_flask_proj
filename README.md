@@ -69,4 +69,5 @@ After the request is sent, the imdb scraper will return a list containing a movi
     # ['Inglourious Basterds', ['Brad Pitt', 'Diane Kruger', 'Eli Roth', 'Mélanie Laurent']]]![UML Sequence Diagram 1]
 ```
    
-(https://user-images.githubusercontent.com/76965703/199153389-9a408aea-39e3-4128-9d86-de0de240d80d.png)
+---
+![UML Sequence Diagram](https://user-images.githubusercontent.com/76965703/199153389-9a408aea-39e3-4128-9d86-de0de240d80d.png)
