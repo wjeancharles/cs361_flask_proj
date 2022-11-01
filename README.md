@@ -60,13 +60,17 @@ After the request is sent, the imdb scraper will return a list containing a movi
 
 <!-- Code Blocks -->
 ```Python
+    # Message being sent
     socket.send_pyobj(movies)
     # Sends movies containing Brad Pitt
+    
+    # Message being received
+    message = socket.recv_pyobj()
 
-    # An example of print(movies)
+    # An example of print(message)
     # [['Fight Club', ['Brad Pitt', 'Edward Norton', 'Meat Loaf', 'Zach Grenier']], 
     # ['Se7en', ['Morgan Freeman', 'Brad Pitt', 'Kevin Spacey', 'Andrew Kevin Walker']], 
-    # ['Inglourious Basterds', ['Brad Pitt', 'Diane Kruger', 'Eli Roth', 'Mélanie Laurent']]]![UML Sequence Diagram 1]
+    # ['Inglourious Basterds', ['Brad Pitt', 'Diane Kruger', 'Eli Roth', 'Mélanie Laurent']]]
 ```
    
 ---
