@@ -1,63 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-                <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 50%;
-        }
+{% extends 'pages/base.jinja2' %}
 
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
+{% block content %}
 
-        th:nth-child(even) {
-          background-color: #dddddd;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+                    <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 50%;
+            }
 
-        .center {
-  		margin-left: auto;
-  		margin-right: auto;
-        text-align: center;
-		}
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
 
-    		h1 {
-  		text-align: center;
-		}
+            th:nth-child(even) {
+              background-color: #dddddd;
+            }
 
-    		h2 {
-  		text-align: center;
-		}
-        </style>
-</head>
-<body>
-    <h1>Welcome to searchjudo.com Your source of Olympic Judo information</h1>
-    <h2>Choose how you want to search. You can select one of the tabs to search for a fighter, country, or Olympic
-    game, or use the search bar to search anything related to Olympic Judo</h2>
-    <table class="center">
-        <th>
-            <a href="/countryProfile">Country Profile</a>
-        </th>
-        <th>
-            <a href="/fighterProfile">Fighter Profile</a>
-        </th>
-        <th>
-            <a href="/olympicGame">Olympic Games</a>
-        </th>
-        <th>
-            <a href="/">Return Home</a>
-        </th>
-    </table>
+            .center {
+      		margin-left: auto;
+      		margin-right: auto;
+            text-align: center;
+    		}
 
-    <p>&nbsp;</p>
+        		h1 {
+      		text-align: center;
+    		}
 
-    <div class="center">
-    <input type="text" value="" name="Searching" class="btn btn-primary" >
-    <p>&nbsp;</p>
-    <input type="button" value="Search For Judo" name="Search_Bar" class="btn btn-primary">
-    </div>
-</body>
-</html>
+        		h2 {
+      		text-align: center;
+    		}
+            </style>
+    </head>
+    <body>
+        <h1>Welcome to searchjudo.com Your source of Olympic Judo information</h1>
+        <h2>Choose how you want to search. You can select one of the tabs to search for a fighter, country, or Olympic
+        game, or use the search bar to search anything related to Olympic Judo</h2>
+        <table class="center">
+            <th>
+                <a href="/countryProfile">Country Profile</a>
+            </th>
+            <th>
+                <a href="/fighterProfile">Fighter Profile</a>
+            </th>
+            <th>
+                <a href="/olympicGame">Olympic Games</a>
+            </th>
+            <th>
+                <a href="/">Return Home</a>
+            </th>
+        </table>
+
+        <p>&nbsp;</p>
+
+        <div class="center">
+        <input type="text" value="" name="Searching" class="btn btn-primary" >
+        <p>&nbsp;</p>
+        <input type="button" value="Search For Judo" name="Search_Bar" class="btn btn-primary">
+        </div>
+    </body>
+    </html>
+
+{% endblock %}
