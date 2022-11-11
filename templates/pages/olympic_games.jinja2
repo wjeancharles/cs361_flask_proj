@@ -4,59 +4,61 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-                    <style>
-            table {
-              font-family: arial, sans-serif;
-              border-collapse: collapse;
-              width: 50%;
-            }
-
-            td, th {
-              border: 1px solid #dddddd;
-              text-align: left;
-              padding: 8px;
-            }
-
-            th:nth-child(even) {
-              background-color: #dddddd;
-            }
-
-            .center {
-      		margin-left: auto;
-      		margin-right: auto;
-            text-align: center;
-    		}
-
-        		h1 {
-      		text-align: center;
-    		}
-
-        		h2 {
-      		text-align: center;
-    		}
-            </style>
+        <script language="JavaScript">
+	function showform(dowhat) {
+		/*
+		 * four DIVS: browse, insert, update, delete
+		 * this function sets one visible the others not
+		 */
+		if(dowhat == 'insert') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'block';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'none';
+		} else if(dowhat == 'update') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'block';
+			document.getElementById('delete').style.display = 'none';
+		} else if(dowhat == 'delete') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'block';
+		} else if(dowhat == 'all') {
+			document.getElementById('browse').style.display = 'block';
+			document.getElementById('insert').style.display = 'block';
+			document.getElementById('edit').style.display = 'block';
+			document.getElementById('delete').style.display = 'block';
+		} else { //by default display browse
+			document.getElementById('browse').style.display = 'block';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'none';
+		}
+	}
+	function newCruiseShip() {
+		showform('insert');
+	}
+	function updateCruiseShip(pid) {
+		showform('update');
+	}
+	function deleteCruiseShip(pid) {
+		showform('delete');
+	}
+	function browseCruiseShips() {
+		showform('browse');
+	}
+	function showAll() {
+		showform('all');
+	}
+	    </script>
     </head>
     <body>
         <h1>Olympic Games</h1>
         <h2>Select a year to display the Olympic game venue and medalists for that year</h2>
-        <table class="center">
-            <th>
-                <a href="/countryProfile">Country Profile</a>
-            </th>
-            <th>
-                <a href="/fighterProfile">Fighter Profile</a>
-            </th>
-            <th>
-                <a href="/olympicGame">Olympic Games</a>
-            </th>
-            <th>
-                <a href="/">Return Home</a>
-            </th>
-        </table>
 
-                <p>&nbsp;</p>
-
-        <div class="center">
+        <form class="center" action="/displayInfo1" method="POST">
         <label for="year">Select a Year to search</label>
         <select id="year" name="year" class="form-control">
             <option value="1964">1964</option>
@@ -74,8 +76,11 @@
             <option value="2016">2016</option>
             <option value="2020">2020</option>
         </select>
-        <input type="button" value="Search" name="Search_Bar" class="btn btn-primary">
-        </div>
+            <div>
+                <br>
+            </div>
+        <input type="Submit" value="olympic" id="search_bar" name="search_bar" class="btn btn-secondary">
+        </form>
 
     </body>
     </html>

@@ -5,78 +5,80 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-                    <style>
-            table {
-              font-family: arial, sans-serif;
-              border-collapse: collapse;
-              width: 50%;
-            }
-
-            td, th {
-              border: 1px solid #dddddd;
-              text-align: left;
-              padding: 8px;
-            }
-
-            th:nth-child(even) {
-              background-color: #dddddd;
-            }
-
-            .center {
-      		margin-left: auto;
-      		margin-right: auto;
-            text-align: center;
-    		}
-
-        		h1 {
-      		text-align: center;
-    		}
-
-        		h2 {
-      		text-align: center;
-    		}
-            </style>
+        <script language="JavaScript">
+	function showform(dowhat) {
+		/*
+		 * four DIVS: browse, insert, update, delete
+		 * this function sets one visible the others not
+		 */
+		if(dowhat == 'insert') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'block';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'none';
+		} else if(dowhat == 'update') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'block';
+			document.getElementById('delete').style.display = 'none';
+		} else if(dowhat == 'delete') {
+			document.getElementById('browse').style.display = 'none';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'block';
+		} else if(dowhat == 'all') {
+			document.getElementById('browse').style.display = 'block';
+			document.getElementById('insert').style.display = 'block';
+			document.getElementById('edit').style.display = 'block';
+			document.getElementById('delete').style.display = 'block';
+		} else { //by default display browse
+			document.getElementById('browse').style.display = 'block';
+			document.getElementById('insert').style.display = 'none';
+			document.getElementById('edit').style.display = 'none';
+			document.getElementById('delete').style.display = 'none';
+		}
+	}
+	function newCruiseShip() {
+		showform('insert');
+	}
+	function updateCruiseShip(pid) {
+		showform('update');
+	}
+	function deleteCruiseShip(pid) {
+		showform('delete');
+	}
+	function browseCruiseShips() {
+		showform('browse');
+	}
+	function showAll() {
+		showform('all');
+	}
+	</script>
     </head>
     <body>
-        <h1>Search Fighter Profile</h1>
+        <h1>Fighter Profile</h1>
         <h2>Select a gender, weight class, and/or country to search for all fighters fitting the criteria</h2>
-        <table class="center">
-            <th>
-                <a href="/countryProfile">Country Profile</a>
-            </th>
-            <th>
-                <a href="/fighterProfile">Fighter Profile</a>
-            </th>
-            <th>
-                <a href="/olympicGame">Olympic Games</a>
-            </th>
-            <th>
-                <a href="/">Return Home</a>
-            </th>
-        </table>
-
-        <p>&nbsp;</p>
-
-
-        <div class="center">
+        <form class="center" action="/displayInfo3" method="POST">
 
         <label for="Gender">Select a Gender</label>
         <select id="gender" name="gender" class="form-control">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="Men">Male</option>
+            <option value="Women">Female</option>
         </select>
 
             <p>&nbsp;</p>
 
             <label for="weight">Select a weight class</label>
         <select id="weight" name="weight" class="form-control">
-            <option value="60kg">60 kg</option>
-            <option value="66kg">66 kg</option>
-            <option value="73kg">73 kg</option>
-            <option value="81kg">81 kg</option>
-            <option value="90kg">90 kg</option>
-            <option value="100kg">100 kg</option>
-            <option value="100+kg">100+ kg</option>
+            <option value="Extra lightweight">(Men) 60kg (Women) 48kg</option>
+            <option value="Half lightweight">(Men) 65/66kg (Women) 52kg</option>
+            <option value="Lightweight">(Men) 63/68/71/73kg (Women) 56/57kg</option>
+            <option value="Half middleweight">(Men) 70/78/81kg (Women) 61/63kg</option>
+            <option value="Middleweight">(Men) 80/86/90kg (Women) 66/70kg</option>
+            <option value="Half heavyweight">(Men) 93/95/100kg (Women) 72/78kg</option>
+            <option value="Heavyweight">(Men) 80+/93+/95+/100+kg (Women) 72+/78+kg</option>
+            <option value="Open class">Open Class</option>
+
         </select>
 
         <p>&nbsp;</p>
@@ -331,9 +333,9 @@
 
                 <p>&nbsp;</p>
 
-        <input type="button" value="Search" name="Search_Bar" class="btn btn-primary">
+        <input type="Submit" value="Submit" id="search_bar" name="search_bar" class="btn btn-secondary">
 
-        </div>
+        </form>
 
     </body>
     </html>
