@@ -77,6 +77,7 @@ def tables():
         request.form.get("search_bar")
         sex["sex"] = request.form["gender"]
         sex["category"] = request.form["weight"]
+        print(request.form["weight"])
         sex["origin"] = request.form["country"]
         search = socket(sex)
     return render_template("/pages/tables.jinja2", search=search)

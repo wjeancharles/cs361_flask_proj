@@ -13,7 +13,7 @@ socket = context.socket(zmq.REQ)
 socket.connect("tcp://localhost:5555")
 
 print("Sending request")
-message = {"sex": "Men", "category": "Heavyweight", "origin": "France"}
+message = {"sex": "Men", "category": "Open Class", "origin": "Japan"}
 socket.send_pyobj(message)
 
 new_message = socket.recv_pyobj()

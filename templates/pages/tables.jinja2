@@ -34,5 +34,8 @@
 {#    </tr>#}
 {#  </tbody>#}
 {#</table>#}
-
-<h3> {{ search }}</h3>
+{% if search == [] %}
+    <h1>There are no fighters with any Olympic medals</h1>
+{% else %}
+    <h3> {{ search }}</h3>
+{% endif %}
