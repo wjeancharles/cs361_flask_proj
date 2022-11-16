@@ -1,3 +1,9 @@
+# Created by Wesley Jean-Charles
+# CS361 Software Engineering 1
+# Last updated: 11/15/2022
+
+# Search judo.com a website that allows the user to search for Olympic judo information.
+
 from flask import Flask, render_template, json, request
 # from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
