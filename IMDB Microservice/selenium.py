@@ -1,3 +1,8 @@
+# Created By: Wesley Jean-Charles
+# Last Update: 11/15/22
+# CS361 Software Engineering 1
+# IMDB Web Scraper using Selenium and Beautiful Soup
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
