@@ -1,3 +1,11 @@
+# Created By: Wesley Jean-Charles
+# Last Update: 11/15/22
+# CS361 Software Engineering 1
+# IMDB Web Scraper
+
+# This microservice scrapes the title, year, actors and rating from all feature films currently
+# stored on the IMDB database.
+
 from requests import get
 from bs4 import BeautifulSoup as Soup
 import pandas as pd
