@@ -1,41 +1,82 @@
-{## Sends the request to the micro_judo.py server#}
-{#socket.send_pyobj()#}
-{##}
-{##}
-{## Receives reply from the micro_judo.py server#}
-{#message = socket.recv_pyobj()#}
+{% extends 'pages/base.jinja2' %}
 
-{#<table class="table">#}
-{#  <thead>#}
-{#    <tr>#}
-{#      <th scope="col">#</th>#}
-{#      <th scope="col">First</th>#}
-{#      <th scope="col">Last</th>#}
-{#      <th scope="col">Handle</th>#}
-{#    </tr>#}
-{#  </thead>#}
-{#  <tbody>#}
-{#    <tr>#}
-{#      <th scope="row">1</th>#}
-{#      <td>Mark</td>#}
-{#      <td>Otto</td>#}
-{#      <td>{{ search }}</td>#}
-{#    </tr>#}
-{#    <tr>#}
-{#      <th scope="row">2</th>#}
-{#      <td>Jacob</td>#}
-{#      <td>Thornton</td>#}
-{#      <td>{{ search }}</td>#}
-{#    </tr>#}
-{#    <tr>#}
-{#      <th scope="row">3</th>#}
-{#      <td colspan="2">Larry the Bird</td>#}
-{#      <td>{{ search }}</td>#}
-{#    </tr>#}
-{#  </tbody>#}
-{#</table>#}
+{% block content %}
+
 {% if search == [] %}
     <h1>There are no fighters with Olympic medals in this category</h1>
-{% else %}
-    <h3> {{ search }}</h3>
+{% elif page == "fighter" %}
+
+<table class="table table-secondary table-striped">
+    <thead>
+        <tr>
+        {% for keys in search[0] %}
+            <th style="text-align: center">{{ keys.capitalize() }}</th>
+        {% endfor %}
+    </thead>
+
+    <tbody>
+    {% for x in range(length) %}
+        <tr>
+            <td style="text-align: center">{{ search[x]['name'] }}</td>
+            <td style="text-align: center">{{ search[x]['origin'] }}</td>
+            <td style="text-align: center">{{ search[x]['sex'] }}</td>
+            <td style="text-align: center">{{ search[x]['gold'] }}</td>
+            <td style="text-align: center">{{ search[x]['silver'] }}</td>
+            <td style="text-align: center">{{ search[x]['bronze'] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% elif page == "olympic" %}
+
+    <h2>{{ search[0]['city'] }} Olympic Games</h2>
+
+    <table class="table table-secondary table-striped">
+    <thead>
+        <tr>
+        {% for keys in search[1] %}
+            <th style="text-align: center">{{ keys.capitalize() }}</th>
+        {% endfor %}
+    </thead>
+
+    <tbody>
+    {% for x in range(length) %}
+        <tr>
+            <td style="text-align: center">{{ search[x]['category'] }}</td>
+            <td style="text-align: center">{{ search[x]['sex'] }}</td>
+            <td style="text-align: center">{{ search[x]['Gold'] }}</td>
+            <td style="text-align: center">{{ search[x]['Silver'] }}</td>
+            <td style="text-align: center">{{ search[x]['Bronze'] }}</td>
+            <td style="text-align: center">{{ search[x]['Bronze2'] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+    {% elif page == "country" %}
+    <h2>{{ name }} Olympic Champions</h2>
+    <table class="table table-secondary table-striped">
+    <thead>
+        <tr>
+        {% for keys in search[0] %}
+            <th style="text-align: center">{{ keys.capitalize() }}</th>
+        {% endfor %}
+    </thead>
+
+    <tbody>
+    {% for x in range(length) %}
+        <tr>
+            <td style="text-align: center">{{ search[x]['name'] }}</td>
+            <td style="text-align: center">{{ search[x]['sex'] }}</td>
+            <td style="text-align: center">{{ search[x]['class'] }}</td>
+            <td style="text-align: center">{{ search[x]['medal'] }}</td>
+            <td style="text-align: center">{{ search[x]['year'] }}</td>
+            <td style="text-align: center">{{ search[x]['city'] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endif %}
+
+{% endblock %}

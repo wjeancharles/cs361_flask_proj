@@ -1,19 +1,18 @@
 import pandas as pd
 from pandas.core.indexes.numeric import Int64Index
 import ssl
-
-ssl._create_default_https_context = ssl._create_unverified_context
-import json
-import time
 import zmq
 
-# collect the data
+ssl._create_default_https_context = ssl._create_unverified_context
+
+
+# Collect the data
 scraper = pd.read_html("https://en.wikipedia.org/wiki/List_of_Olympic_medalists_in_judo")
 
-# data cleaning
+# Data cleaning
 scraper[2].loc[2, "Games"] = "1968 Mexico City details"
 
-# hard coded list of table data
+# Hard coded list of table data
 tables = [["Men", "Extra Lightweight"],
           ["Men", "Half Lightweight"],
           ["Men", "Lightweight"],
@@ -30,15 +29,16 @@ tables = [["Men", "Extra Lightweight"],
           ["Women", "Half Heavyweight"],
           ["Women", "Heavyweight"]]
 
-# hard coded list of medals
+# Hard coded list of medals
 medals = ["Gold", "Silver", "Bronze"]
 
-# set up the pipeline
+# Set up the pipeline
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
 
 
+# Scraping function for the country search page
 def country_search(req):
     country = []
     for table in range(len(scraper) - 3):
@@ -66,6 +66,7 @@ def country_search(req):
     return country_output
 
 
+# Scraping function for the Olympic search page
 def olympic_search(req):
     olympic = []
     for table in range(len(scraper) - 3):
@@ -87,6 +88,7 @@ def olympic_search(req):
     return olympic
 
 
+# Scraping function for the fighter search page
 def fighter_search(req):
     class Person:
         def __init__(self, name, sex, origin):
@@ -179,11 +181,11 @@ def fighter_search(req):
     return final_fighters
 
 
-# given an input message af the form {"country": "some country"}, return judo information for a country
+# Given an input message af the form {"country": "some country"}, return judo information for a country
 
-# given an input message af the form {"olympic": "XXXX"}, return judo information from a specific year
+# Given an input message af the form {"olympic": "XXXX"}, return judo information from a specific year
 
-# given an input message af the form {"sex": "Men", "category": "some cat, "origin": "some country},
+# Given an input message af the form {"sex": "Men", "category": "some cat, "origin": "some country},
 # return judo information for a specific fighter
 
 while True:
@@ -191,7 +193,7 @@ while True:
     message = socket.recv_pyobj()
     print(f"Received request: {message}")
 
-    # fetch results
+    # Fetch results
     if "country" in message.keys():
         result = country_search(message)
     elif "olympic" in message.keys():
