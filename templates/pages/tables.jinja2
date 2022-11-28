@@ -20,9 +20,9 @@
             <td style="text-align: center">{{ search[x]['name'] }}</td>
             <td style="text-align: center">{{ search[x]['origin'] }}</td>
             <td style="text-align: center">{{ search[x]['sex'] }}</td>
-            <td style="text-align: center">{{ search[x]['gold'] }}</td>
-            <td style="text-align: center">{{ search[x]['silver'] }}</td>
-            <td style="text-align: center">{{ search[x]['bronze'] }}</td>
+            <td style="text-align: center">{{ ','.join(search[x]['gold']) }}</td>
+            <td style="text-align: center">{{ ','.join(search[x]['silver']) }}</td>
+            <td style="text-align: center">{{ ','.join(search[x]['bronze']) }}</td>
         </tr>
     {% endfor %}
     </tbody>
@@ -45,10 +45,10 @@
         <tr>
             <td style="text-align: center">{{ search[x]['category'] }}</td>
             <td style="text-align: center">{{ search[x]['sex'] }}</td>
-            <td style="text-align: center">{{ search[x]['Gold'] }}</td>
-            <td style="text-align: center">{{ search[x]['Silver'] }}</td>
-            <td style="text-align: center">{{ search[x]['Bronze'] }}</td>
-            <td style="text-align: center">{{ search[x]['Bronze2'] }}</td>
+            <td style="text-align: center">{{ ','.join(search[x]['Gold']) }}</td>
+            <td style="text-align: center">{{ ','.join(search[x]['Silver']) }}</td>
+            <td style="text-align: center">{{ ','.join(search[x]['Bronze']) }}</td>
+            <td style="text-align: center">{{ ','.join(search[x]['Bronze2']) }}</td>
         </tr>
     {% endfor %}
     </tbody>
